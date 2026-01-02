@@ -43,6 +43,13 @@
     "experiments": {
       "typedRoutes": true,
       "reactCompiler": true
-    }
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "3b299ab8-e18a-4ecd-9287-9f433c3a2265"
+      }
+    },
+    "owner": "dle-radicle"
   }
 }
