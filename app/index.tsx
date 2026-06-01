@@ -1,6 +1,11 @@
 import { Link } from "expo-router";
 import { Text, View } from "react-native";
 
+const getRandomGithubAvatar = () => {
+  const randomId = Math.floor(Math.random() * 1000);
+  return `https://avatars.githubusercontent.com/u/${randomId}`;
+};
+
 export default function Index() {
   return (
     <View
@@ -12,6 +17,17 @@ export default function Index() {
     >
       <Text>Edit app/index.tsx to edit this screen.</Text>
       <Link href="/profile">Go to profile</Link>
+      <Link
+        href={{
+          pathname: "/profile/[id]",
+          params: {
+            id: getRandomGithubAvatar(),
+          },
+        }}
+      >
+        Go to random profile
+      </Link>
+
       <Link
         href={{
           pathname: "/settings",
