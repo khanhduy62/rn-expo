@@ -15,9 +15,7 @@ export default function Settings() {
     >
       <Text>Settings</Text>
       <Text>Name: {name}</Text>
-      <Link dismissTo href="/">
-        Go back to home
-      </Link>
+      <Link href="/">Go back to home</Link>
     </View>
   );
 }

@@ -21,6 +21,9 @@ export default function ProfileIndex() {
         }}
       >
         <Text>Profile</Text>
+        
+        <Link href="/profile/settings">Go to profile setting</Link>
+
         <Pressable onPress={() => router.back()}>
           <Text>Go back to home 1</Text>
         </Pressable>
