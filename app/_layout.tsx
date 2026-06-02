@@ -4,13 +4,10 @@ export default function RootLayout() {
   return (
     <Stack>
       <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+      <Stack.Screen name="profile" options={{ headerShown: false }} />
       <Stack.Screen
-        name="profile/settings"
-        options={{
-          headerShown: true,
-          headerTitle: "Profile Settings Title",
-          presentation: "modal",
-        }}
+        name="(modals)"
+        options={{ headerShown: false, presentation: "modal" }}
       />
     </Stack>
   );
