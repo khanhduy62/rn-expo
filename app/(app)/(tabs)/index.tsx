@@ -1,5 +1,6 @@
+import { useAuth } from "@/context/auth";
 import { Link } from "expo-router";
-import { Text, View } from "react-native";
+import { Button, Text, View } from "react-native";
 
 const getRandomGithubAvatar = () => {
   const randomId = Math.floor(Math.random() * 1000);
@@ -7,6 +8,8 @@ const getRandomGithubAvatar = () => {
 };
 
 export default function Index() {
+  const { setUser } = useAuth();
+
   return (
     <View
       style={{
@@ -39,6 +42,12 @@ export default function Index() {
       >
         Go to settings
       </Link>
+
+      <Button
+        title="Sign out"
+        color="#f44336"
+        onPress={() => setUser(undefined)}
+      />
     </View>
   );
 }
