@@ -37,7 +37,7 @@ export function AuthContextProvider({
     try {
       setIsLoading(true);
       await new Promise((resolve) => setTimeout(resolve, 2000)); // 2 seconds delay
-      // setUser({ name: "duy", email: "duy@gmail.com", role: UserRole.User });
+      setUser({ name: "duy", email: "duy@gmail.com", role: UserRole.User });
     } catch (e) {
       alert("something went wrong");
     } finally {

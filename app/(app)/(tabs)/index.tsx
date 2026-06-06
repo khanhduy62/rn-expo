@@ -19,6 +19,7 @@ export default function Index() {
       }}
     >
       <Text>Edit app/index.tsx to edit this screen.</Text>
+      <Link href="/deeplinking/1">Go to deeplinking details</Link>
       <Link href="/profile">Go to profile</Link>
       <Link href="/profile/settings">Go to profile setting</Link>
       <Link

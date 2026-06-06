@@ -2,6 +2,10 @@ import { useAuth } from "@/context/auth";
 import { Redirect, Stack } from "expo-router";
 import { ActivityIndicator, View } from "react-native";
 
+export const unstable_settings = {
+  initialRouteName: "(tabs)",
+};
+
 export default function RootLayout() {
   const { user, loading } = useAuth();
 
@@ -21,6 +25,10 @@ export default function RootLayout() {
       <Stack.Screen name="profile" options={{ headerShown: false }} />
       <Stack.Screen
         name="(modals)"
+        options={{ headerShown: false, presentation: "modal" }}
+      />
+      <Stack.Screen
+        name="deeplinking"
         options={{ headerShown: false, presentation: "modal" }}
       />
     </Stack>
