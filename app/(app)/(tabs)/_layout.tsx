@@ -22,6 +22,15 @@ export default function TabsLayout() {
           headerTitle: "Settings Title",
         }}
       />
+       <Tabs.Screen
+        name="admin"
+        options={{
+          title: "Admin",
+          tabBarIcon: ({ color }) => (
+            <MaterialIcons size={28} name="admin-panel-settings" color={color} />
+          ),
+        }}
+      />
     </Tabs>
   );
 }
