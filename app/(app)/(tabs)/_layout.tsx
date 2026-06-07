@@ -22,12 +22,25 @@ export default function TabsLayout() {
           headerTitle: "Settings Title",
         }}
       />
-       <Tabs.Screen
+      <Tabs.Screen
         name="admin"
         options={{
           title: "Admin",
           tabBarIcon: ({ color }) => (
-            <MaterialIcons size={28} name="admin-panel-settings" color={color} />
+            <MaterialIcons
+              size={28}
+              name="admin-panel-settings"
+              color={color}
+            />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="gestures-animations"
+        options={{
+          title: "Gest/Anim",
+          tabBarIcon: ({ color }) => (
+            <MaterialIcons size={28} name="animation" color={color} />
           ),
         }}
       />
