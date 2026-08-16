@@ -16,6 +16,7 @@ import {
 } from "react-native-gesture-handler";
 import ReanimatedSwipeable from "react-native-gesture-handler/ReanimatedSwipeable";
 import Animated, {
+  AnimatedStyle,
   SharedValue,
   useAnimatedReaction,
   useAnimatedStyle,
@@ -30,22 +31,20 @@ const Box = ({
   style,
   children,
 }: {
-  style?: ViewStyle;
+  style?: AnimatedStyle<ViewStyle>;
   children?: React.ReactNode;
 }) => {
   return (
     <Animated.View
-      style={
-        StyleSheet.compose(
-          {
-            width: 200,
-            height: 200,
-            backgroundColor: "blue",
-            borderRadius: 16,
-          },
-          style,
-        ) as ViewStyle
-      }
+      style={[
+        {
+          width: 200,
+          height: 200,
+          backgroundColor: "blue",
+          borderRadius: 16,
+        },
+        style,
+      ]}
     >
       {children}
     </Animated.View>
