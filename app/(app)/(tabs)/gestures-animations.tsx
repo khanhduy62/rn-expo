@@ -3,7 +3,6 @@ import { useState } from "react";
 import {
   Button,
   Pressable,
-  StyleSheet,
   Text,
   View,
   ViewStyle,
@@ -133,11 +132,15 @@ const LongPressGestureExample = () => {
 
   const longPressGesture = Gesture.LongPress()
     .onStart(() => {
+      // eslint-disable-next-line react-hooks/immutability -- Reanimated SharedValue mutation is the intended API
       scale.value = withSpring(1.3);
+      // eslint-disable-next-line react-hooks/immutability -- Reanimated SharedValue mutation is the intended API
       opacity.value = withTiming(0.5);
     })
     .onFinalize(() => {
+      // eslint-disable-next-line react-hooks/immutability -- Reanimated SharedValue mutation is the intended API
       scale.value = withSpring(1);
+      // eslint-disable-next-line react-hooks/immutability -- Reanimated SharedValue mutation is the intended API
       opacity.value = withTiming(1);
     });
 
@@ -173,6 +176,7 @@ const RotationGestureExample = () => {
   );
 
   const rotationGesture = Gesture.Rotation().onUpdate((e) => {
+    // eslint-disable-next-line react-hooks/immutability -- Reanimated SharedValue mutation is the intended API
     rotation.value = e.rotation;
   });
 
@@ -201,6 +205,7 @@ const PinchGestureExample = () => {
 
   const pinchGesture = Gesture.Pinch()
     .onUpdate((e) => {
+      // eslint-disable-next-line react-hooks/immutability -- Reanimated SharedValue mutation is the intended API
       scale.value = savedScale.value * e.scale;
     })
     .onEnd(() => {
@@ -278,6 +283,7 @@ const ComposedGesturesExample = () => {
   }));
   const panGesture = Gesture.Pan()
     .onUpdate((e) => {
+      // eslint-disable-next-line react-hooks/immutability -- Reanimated SharedValue mutation is the intended API
       offset.value = {
         x: e.translationX + start.value.x,
         y: e.translationY + start.value.y,
@@ -292,6 +298,7 @@ const ComposedGesturesExample = () => {
 
   const pinchGesture = Gesture.Pinch()
     .onUpdate((e) => {
+      // eslint-disable-next-line react-hooks/immutability -- Reanimated SharedValue mutation is the intended API
       scale.value = savedScale.value * e.scale;
     })
     .onEnd(() => {
@@ -300,6 +307,7 @@ const ComposedGesturesExample = () => {
 
   const rotationGesture = Gesture.Rotation()
     .onUpdate((e) => {
+      // eslint-disable-next-line react-hooks/immutability -- Reanimated SharedValue mutation is the intended API
       rotation.value = savedRotation.value + e.rotation;
     })
     .onEnd(() => {
@@ -339,6 +347,7 @@ const RaceGesturesExample = () => {
 
   const pinchGesture = Gesture.Pinch()
     .onUpdate((e) => {
+      // eslint-disable-next-line react-hooks/immutability -- Reanimated SharedValue mutation is the intended API
       scale.value = savedScale.value * e.scale;
     })
     .onEnd(() => {
@@ -347,6 +356,7 @@ const RaceGesturesExample = () => {
 
   const rotationGesture = Gesture.Rotation()
     .onUpdate((e) => {
+      // eslint-disable-next-line react-hooks/immutability -- Reanimated SharedValue mutation is the intended API
       rotation.value = savedRotation.value + e.rotation;
     })
     .onEnd(() => {
