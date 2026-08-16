@@ -5,6 +5,7 @@ import * as React from 'react';
 
 export interface MySwiftUiViewSwiftUIViewProps extends CommonViewModifierProps {
   title: string;
+  onTap?: () => void;
   children?: React.ReactNode;
 }
 

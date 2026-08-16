@@ -37,6 +37,19 @@ export default function TabsLayout() {
         }}
       />
       <Tabs.Screen
+        name="swift-ui"
+        options={{
+          title: "Swift UI",
+          tabBarIcon: ({ color }) => (
+            <MaterialIcons
+              size={28}
+              name="smartphone"
+              color={color}
+            />
+          ),
+        }}
+      />
+      <Tabs.Screen
         name="gestures-animations"
         options={{
           title: "Gest/Anim",

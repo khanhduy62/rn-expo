@@ -4,6 +4,7 @@ import ExpoUI
 
 final class MySwiftUiViewSwiftUIViewProps: UIBaseViewProps {
   @Field var title: String = ""
+  var onTap = EventDispatcher()
 }
 
 struct MySwiftUiViewSwiftUIView: ExpoSwiftUI.View {
@@ -13,6 +14,9 @@ struct MySwiftUiViewSwiftUIView: ExpoSwiftUI.View {
     VStack {
       Text(props.title)
         .font(.headline)
+        Button("Press me") {
+            props.onTap([:])
+        }
       Children()
     }
   }
