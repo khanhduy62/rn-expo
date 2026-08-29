@@ -27,6 +27,7 @@ export default function TabsLayout() {
         name="admin"
         options={{
           title: "Admin",
+          tabBarButtonTestID: "admin-tab-button",
           tabBarIcon: ({ color }) => (
             <MaterialIcons
               size={28}

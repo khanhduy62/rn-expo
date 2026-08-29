@@ -1,0 +1,9 @@
+appId: com.dle-radicle.rn-expo
+---
+- launchApp
+- extendedWaitUntil:
+    visible:
+      id: "home-screen"
+    timeout: 40000
+- tapOn: "Go to profile setting.*"
+- assertVisible: "Profile Settings without Tab"

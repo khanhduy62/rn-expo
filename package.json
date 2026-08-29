@@ -8,7 +8,9 @@
     "android": "expo run:android",
     "ios": "expo run:ios",
     "web": "expo start --web",
-    "lint": "expo lint"
+    "lint": "expo lint",
+    "test": "maestro test .maestro/",
+    "test:admin_become_admin": "maestro test .maestro/admin_become_admin.yaml"
   },
   "dependencies": {
     "@expo/ui": "~56.0.25",

@@ -1,0 +1,10 @@
+appId: com.dle-radicle.rn-expo
+---
+- launchApp
+- extendedWaitUntil:
+    visible:
+      id: "admin-tab-button"
+    timeout: 40000
+- tapOn: "Admin.*"
+- tapOn: "Become an Admin"
+- assertVisible: "Hello duy"
