@@ -23,7 +23,7 @@
       "package": "com.dleradicle.rnexpo"
     },
     "web": {
-      "output": "static",
+      "output": "server",
       "favicon": "./assets/images/favicon.png"
     },
     "plugins": [

@@ -41,6 +41,25 @@ This command will move the starter code to the **app-example** directory and cre
 npx uri-scheme open rnexpo://deeplinking/2 --ios
 ```
 
+## API routes
+
+API routes are files ending in `+api.ts` inside the **app** directory (e.g. [app/api/hello+api.ts](app/api/hello+api.ts) is served at `/api/hello`). They require `web.output` to be `"server"` in [app.json](app.json).
+
+To run the demo:
+
+1. Start the dev server with a cleared bundler cache (needed after adding/changing API routes):
+
+   ```bash
+   yarn start --reset-cache
+   ```
+
+2. Call the route:
+
+   ```bash
+   curl http://localhost:8081/api/hello
+   # {"hello":"world"}
+   ```
+
 ## Learn more
 
 To learn more about developing your project with Expo, look at the following resources:
