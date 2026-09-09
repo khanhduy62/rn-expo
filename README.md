@@ -43,7 +43,7 @@ npx uri-scheme open rnexpo://deeplinking/2 --ios
 
 ## API routes
 
-API routes are files ending in `+api.ts` inside the **app** directory (e.g. [app/api/hello+api.ts](app/api/hello+api.ts) is served at `/api/hello`). They require `web.output` to be `"server"` in [app.json](app.json).
+API routes are files ending in `+api.ts` inside the **app** directory (e.g. [app/api/hello+api.ts](app/api/hello+api.ts) is served at `/api/hello`). They require `web.output` to be `"server"` in [app.config.js](app.config.js).
 
 To run the demo:
 
@@ -59,6 +59,62 @@ To run the demo:
    curl http://localhost:8081/api/hello
    # {"hello":"world"}
    ```
+
+## Deploy the web app to EAS Hosting
+
+Follows [EAS Hosting — Get started](https://docs.expo.dev/eas/hosting/get-started/). This deploys the web bundle **and** the API routes together, onto Cloudflare Workers.
+
+One-time setup:
+
+```bash
+npm install --global eas-cli
+eas login
+eas whoami
+```
+
+`expo.web.output` must be set — this project uses `"server"` in [app.config.js](app.config.js), which is what enables API routes and server functions.
+
+Then, for every deploy:
+
+1. Export the web bundle (must be re-run before each deploy — `eas deploy` only uploads `dist`):
+
+   ```bash
+   npx expo export --platform web
+   ```
+
+2. Deploy a preview. On the first run the CLI prompts you to link an EAS project and pick a subdomain:
+
+   ```bash
+   eas deploy
+   ```
+
+   Gives a per-deploy URL: `https://{subdomain}--{hash}.expo.app/`
+
+3. Promote to production once the preview looks right:
+
+   ```bash
+   eas deploy --prod
+   ```
+
+   Serves at `https://{subdomain}.expo.app/`
+
+### Environment variables
+
+Two separate mechanisms, easy to mix up:
+
+- **`EXPO_PUBLIC_*`** are inlined at **export** time, so they come from the local `.env*` files. Step 1 runs with `NODE_ENV=production`, meaning only `.env.production.local`, `.env.local`, `.env.production` and `.env` are read. A file like `.env.staging` is never picked up — `NODE_ENV` only accepts `development`, `test` or `production`. To export with a different set of values, load them into the shell first (real env vars take priority over `.env*` files):
+
+  ```bash
+  set -a; . ./.env.staging; set +a
+  npx expo export --platform web
+  ```
+
+- **Server-side secrets** read via `process.env` inside `+api.ts` are resolved at **runtime** on the Worker, from EAS environment variables — not from any local `.env` file:
+
+  ```bash
+  eas env:create --environment production --name MY_SECRET --value "..." --type secret
+  eas env:pull --environment production   # mirror them locally into .env.local
+  ```
 
 ## Learn more
 
