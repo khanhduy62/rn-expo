@@ -7,12 +7,6 @@ const getRandomGithubAvatar = () => {
   return `https://avatars.githubusercontent.com/u/${randomId}`;
 };
 
-async function fetchHello() {
-  const response = await fetch('/api/hello');
-  const data = await response.json();
-  alert('data: ' + JSON.stringify(data));
-}
-
 export default function Index() {
   const { setUser } = useAuth();
 
@@ -26,7 +20,6 @@ export default function Index() {
     >
       <Text testID="home-screen">Home Screen</Text>
       <Text>Expo ENV: {process.env.EXPO_PUBLIC_API_URL}</Text>
-      <Button onPress={() => fetchHello()} title="Fetch hello" />
       <Text>Edit app/index.tsx to edit this screen.</Text>
       <Link href="/deeplinking/1">Go to deeplinking details</Link>
       <Link href="/profile">Go to profile</Link>
