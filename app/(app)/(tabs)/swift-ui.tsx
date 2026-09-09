@@ -1,27 +1,15 @@
-import { mySwiftUiViewSwiftUIModifier } from "@/modules/my-swift-ui-view/src/MySwiftUiViewSwiftUIModifier";
-import MySwiftUiViewSwiftUIView from "@/modules/my-swift-ui-view/src/MySwiftUiViewSwiftUIView";
-import { Host } from "@expo/ui/swift-ui";
-import { padding } from "@expo/ui/swift-ui/modifiers";
+import { Text, View } from "react-native";
 
-export default function LoadingView() {
+/**
+ * Required fallback sibling for `swift-ui.ios.tsx` — expo-router throws if a
+ * platform-extension route has no extension-less sibling. Must not import
+ * `@expo/ui`: the `ExpoUI` native module does not exist on web. The tab itself
+ * is hidden on non-iOS by `Tabs.Protected`, so this rarely renders.
+ */
+export default function SwiftUiScreen() {
   return (
-    <Host style={{ flex: 1 }}>
-      <MySwiftUiViewSwiftUIView
-        title="Hello from SwiftUI!"
-        modifiers={[
-          padding({
-            all: 20,
-          }),
-          mySwiftUiViewSwiftUIModifier({
-            color: "green",
-            width: 1,
-            cornerRadius: 10,
-          }),
-        ]}
-        onTap={() => {
-          alert("SwiftUI view tapped!");
-        }}
-      ></MySwiftUiViewSwiftUIView>
-    </Host>
+    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+      <Text>SwiftUI is only available on iOS.</Text>
+    </View>
   );
 }

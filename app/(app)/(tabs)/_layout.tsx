@@ -1,5 +1,6 @@
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import { Tabs } from "expo-router";
+import { Platform } from "react-native";
 
 export default function TabsLayout() {
   return (
@@ -37,19 +38,17 @@ export default function TabsLayout() {
           ),
         }}
       />
-      <Tabs.Screen
-        name="swift-ui"
-        options={{
-          title: "Swift UI",
-          tabBarIcon: ({ color }) => (
-            <MaterialIcons
-              size={28}
-              name="smartphone"
-              color={color}
-            />
-          ),
-        }}
-      />
+      <Tabs.Protected guard={Platform.OS === "ios"}>
+        <Tabs.Screen
+          name="swift-ui"
+          options={{
+            title: "Swift UI",
+            tabBarIcon: ({ color }) => (
+              <MaterialIcons size={28} name="smartphone" color={color} />
+            ),
+          }}
+        />
+      </Tabs.Protected>
       <Tabs.Screen
         name="gestures-animations"
         options={{

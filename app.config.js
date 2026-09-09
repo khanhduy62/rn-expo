@@ -5,7 +5,7 @@ const IS_PREVIEW = process.env.APP_VARIANT === "preview";
 export const myUrl =
   environment === "development"
     ? "http://localhost:8081"
-    : "https://evanbacon.dev/";
+    : "https://duy.expo.app";
 
 export default {
   expo: {
