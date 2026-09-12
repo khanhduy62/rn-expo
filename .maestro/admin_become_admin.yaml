@@ -8,3 +8,6 @@ appId: com.dle-radicle.rn-expo
 - tapOn: "Admin.*"
 - tapOn: "Become an Admin"
 - assertVisible: "Hello duy"
+- waitForAnimationToEnd:
+    timeout: 5000
+- takeScreenshot: screen

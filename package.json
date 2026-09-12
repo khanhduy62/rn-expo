@@ -11,8 +11,11 @@
     "ios": "expo run:ios",
     "web": "expo start --web",
     "lint": "expo lint",
-    "test": "maestro test .maestro/",
-    "test:admin_become_admin": "maestro test .maestro/admin_become_admin.yaml"
+    "maestro": "MAESTRO_DRIVER_STARTUP_TIMEOUT=300000 PATH=\"$HOME/.maestro/bin:$PATH\" maestro",
+    "test": "yarn maestro test .maestro/ --exclude-tags=debug",
+    "test:admin_become_admin": "yarn maestro test .maestro/admin_become_admin.yaml",
+    "test:log": "yarn ui:debug --flow .maestro/profile_detail.yaml --filmstrip",
+    "ui:debug": "./scripts/ui-debug.sh"
   },
   "dependencies": {
     "@expo/ui": "~56.0.25",

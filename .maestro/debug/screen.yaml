@@ -1,0 +1,26 @@
+appId: com.dle-radicle.rn-expo
+tags:
+  - debug
+# Deliberately no `env:` block here. Maestro applies it as a second
+# defineVariables step *after* the CLI, so `ROUTE: ""` would silently overwrite
+# --env ROUTE=profile with an empty string and the openLink below would just
+# reopen the app at home. ui-debug.sh always passes --env ROUTE=.
+---
+# Scratch flow for looking at one screen. It asserts nothing on purpose - it
+# puts the app on the screen and captures what is actually there, so the
+# screenshot and hierarchy can be read afterwards.
+#
+#   maestro test .maestro/debug/screen.yaml --env ROUTE=profile/settings
+#
+# Any route from app/ works, the same string you would pass to <Link href>.
+- launchApp
+# context/auth.tsx resolves the fake session after ~2s, and (app)/_layout
+# renders a spinner until it does. Deep linking before that gets swallowed.
+- extendedWaitUntil:
+    visible:
+      id: "home-screen"
+    timeout: 40000
+- openLink: rnexpo://${ROUTE}
+- waitForAnimationToEnd:
+    timeout: 5000
+- takeScreenshot: .maestro/artifacts/screen
