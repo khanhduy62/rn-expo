@@ -4,8 +4,9 @@
   "version": "1.0.0",
   "scripts": {
     "start": "expo start",
-    "start:dev": "NODE_ENV=development expo start",
-    "start:prod": "NODE_ENV=production expo start",
+    "start:dev": "cp env/development.env .env.local && expo start --clear",
+    "start:prod": "cp env/production.env .env.local && expo start --clear",
+    "start:release": "cp env/production.env .env.local && expo start --clear --no-dev --minify",
     "reset-project": "node ./scripts/reset-project.js",
     "android": "expo run:android",
     "ios": "expo run:ios",
