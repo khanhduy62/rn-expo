@@ -9,7 +9,9 @@
       "distribution": "internal"
     },
     "preview": {
-      "distribution": "internal"
+      "distribution": "internal",
+      "autoIncrement": true,
+      "developmentClient": true
     },
     "production": {
       "autoIncrement": true

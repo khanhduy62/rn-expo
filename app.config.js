@@ -20,6 +20,9 @@ export default {
     ios: {
       supportsTablet: true,
       bundleIdentifier: "com.dle-radicle.rn-expo",
+      infoPlist: {
+        ITSAppUsesNonExemptEncryption: false,
+      },
     },
     android: {
       adaptiveIcon: {
