@@ -1,6 +1,7 @@
 import Button from "@/components/Button";
 import { useAuth, User, UserRole } from "@/context/auth";
-import { useState } from "react";
+import MyHaptics, { hello, PI, setValueAsync } from "@/modules/my-haptics";
+import { useEffect, useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 
 async function fetchHello() {
@@ -13,6 +14,18 @@ export default function AdminScreen() {
   const { user, setUser } = useAuth();
   const [postResponse, setPostResponse] = useState();
   const [getResponse, setGetResponse] = useState();
+
+  useEffect(() => {
+    console.log("PI:", PI);
+    console.log("hello:", hello());
+
+    const sub = MyHaptics.addListener("onChange", (e) =>
+      console.log("onChange:", e.value),
+    );
+    setValueAsync("set value async");
+
+    return () => sub.remove();
+  }, []);
 
   async function handlePostReq(userId: string) {
     try {
