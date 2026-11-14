@@ -1,6 +1,11 @@
 import Button from "@/components/Button";
 import { useAuth, User, UserRole } from "@/context/auth";
-import MyHaptics, { hello, PI, setValueAsync } from "@/modules/my-haptics";
+import MyHaptics, {
+  hello,
+  PI,
+  setValueAsync,
+  triggerHaptic,
+} from "@/modules/my-haptics";
 import { useEffect, useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 
@@ -96,6 +101,15 @@ export default function AdminScreen() {
       <Button onPress={fetchHello}>Fetch Hello</Button>
       <Button onPress={() => handlePostReq("123")}>POST User</Button>
       <Button onPress={handleGetReq}>GET Users</Button>
+      <Button onPress={() => triggerHaptic("heavy")}>
+        Trigger Haptic Heavy
+      </Button>
+      <Button onPress={() => triggerHaptic("medium")}>
+        Trigger Haptic Medium
+      </Button>
+      <Button onPress={() => triggerHaptic("light")}>
+        Trigger Haptic Light
+      </Button>
       <Text>POST Response: {JSON.stringify(postResponse)}</Text>
       <Text>GET Response: {JSON.stringify(getResponse, null, 2)}</Text>
     </View>
