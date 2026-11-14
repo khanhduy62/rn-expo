@@ -1,6 +1,12 @@
 import Button from "@/components/Button";
 import { useAuth, User, UserRole } from "@/context/auth";
-import { useState } from "react";
+import MyHaptics, {
+  hello,
+  PI,
+  setValueAsync,
+  triggerHaptic,
+} from "@/modules/my-haptics";
+import { useEffect, useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 
 async function fetchHello() {
@@ -13,6 +19,18 @@ export default function AdminScreen() {
   const { user, setUser } = useAuth();
   const [postResponse, setPostResponse] = useState();
   const [getResponse, setGetResponse] = useState();
+
+  useEffect(() => {
+    console.log("PI:", PI);
+    console.log("hello:", hello());
+
+    const sub = MyHaptics.addListener("onChange", (e) =>
+      console.log("onChange:", e.value),
+    );
+    setValueAsync("set value async");
+
+    return () => sub.remove();
+  }, []);
 
   async function handlePostReq(userId: string) {
     try {
@@ -83,6 +101,15 @@ export default function AdminScreen() {
       <Button onPress={fetchHello}>Fetch Hello</Button>
       <Button onPress={() => handlePostReq("123")}>POST User</Button>
       <Button onPress={handleGetReq}>GET Users</Button>
+      <Button onPress={() => triggerHaptic("heavy")}>
+        Trigger Haptic Heavy
+      </Button>
+      <Button onPress={() => triggerHaptic("medium")}>
+        Trigger Haptic Medium
+      </Button>
+      <Button onPress={() => triggerHaptic("light")}>
+        Trigger Haptic Light
+      </Button>
       <Text>POST Response: {JSON.stringify(postResponse)}</Text>
       <Text>GET Response: {JSON.stringify(getResponse, null, 2)}</Text>
     </View>

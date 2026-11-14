@@ -116,6 +116,16 @@ Two separate mechanisms, easy to mix up:
   eas env:pull --environment production   # mirror them locally into .env.local
   ```
 
+## Build the iOS app with EAS (preview)
+
+Builds an internal-distribution development client using the `preview` profile in [eas.json](eas.json) (`developmentClient: true`, `autoIncrement: true`):
+
+```bash
+eas build --platform ios --profile preview
+```
+
+Rebuild whenever native code changes (e.g. [modules/my-haptics/ios/](modules/my-haptics/ios/)) — Metro/Fast Refresh does not pick up native changes.
+
 ## Learn more
 
 To learn more about developing your project with Expo, look at the following resources:
